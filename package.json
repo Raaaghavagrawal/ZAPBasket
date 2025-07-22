@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "zapbasket-nextjs",
   "version": "1.0.0",
   "private": true,
@@ -51,5 +52,16 @@
     "prisma": "^6.12.0",
     "tailwindcss": "^4.1.11",
     "typescript": "^5"
+=======
+  "dependencies": {
+    "@prisma/client": "^6.12.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "bcryptjs": "^3.0.2",
+    "mysql2": "^3.14.2",
+    "prisma": "^6.12.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+>>>>>>> d114e08efb1771f72337b7fb32dadea9b88b1d4e
   }
 }
