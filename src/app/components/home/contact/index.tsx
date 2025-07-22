@@ -69,13 +69,13 @@ const Contact = (props: { contactdataNumber: string }) => {
 
 
     return (
-        <section className="py-20 md:py-40 bg-lightgray dark:bg-darkblack flex items-center justify-center min-h-screen">
+        <section className="py-20 md:py-40 flex items-center justify-center min-h-screen mt-10">
             <div className="container flex flex-col gap-12 items-center justify-center">
                 {/* Left: Info */}
                 <div className="w-full max-w-2xl flex flex-col gap-8 items-center text-center">
                     <div className="flex items-center gap-4">
-                        <span className="bg-primary dark:text-secondary py-1.5 px-2.5 text-base font-medium rounded-full">{contactdataNumber ? contactdataNumber : 10}</span>
-                        <div className="h-px w-16 bg-black/12 dark:bg-white/12" />
+                        {/* <span className="bg-primary dark:text-secondary py-1.5 px-2.5 text-base font-medium rounded-full">{contactdataNumber ? contactdataNumber : 10}</span> */}
+                        {/* <div className="h-px w-16 bg-black/12 dark:bg-white/12" /> */}
                         <p className="section-bedge py-1.5 px-4 rounded-full">Contact us</p>
                     </div>
                     <h2 className="max-w-2xl text-4xl font-bold text-secondary dark:text-white">Get in touch</h2>
@@ -100,7 +100,7 @@ const Contact = (props: { contactdataNumber: string }) => {
                 </div>
                 {/* Right: Form */}
                 <div className="w-full max-w-2xl flex justify-center items-center">
-                    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto bg-white dark:bg-twilliteblack rounded-2xl shadow-xl p-8 flex flex-col gap-6">
+                    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto rounded-2xl p-8 dark:bg-twilliteblack dark:shadow-xl flex flex-col gap-6">
                         <div className="flex items-center gap-3 bg-[#f4f4f5] dark:bg-darkblack rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-primary">
                             <svg className="text-secondary dark:text-white w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                             <input

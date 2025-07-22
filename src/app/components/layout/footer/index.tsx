@@ -52,7 +52,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="mt-10 border-t border-white/20 pt-6 text-center">
-            <p className="text-white/60 text-sm">&copy; {new Date().getFullYear()} ZAPBASKET. All rights reserved.</p>
+            <p className="text-white/60 text-sm">&copy; {new Date().getFullYear()} ZAPBASKET.</p>
           </div>
         </div>
       </div>

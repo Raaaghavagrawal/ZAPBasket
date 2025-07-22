@@ -97,7 +97,7 @@ export default function ShopPage() {
   return (
     <>
       <Header />
-      <div className="container mx-auto py-12 mt-60 min-h-screen bg-lightgray dark:bg-secondary rounded-xl shadow-lg mb-20">
+      <div className="container mx-auto py-12 mt-60 min-h-screen rounded-xl shadow-lg mb-20">
         <h1 className="text-4xl font-bold mb-10 text-center text-secondary dark:text-white mt-[100px]">Shop</h1>
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((cat) => (
