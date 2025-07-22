@@ -9,14 +9,14 @@ export default function TopDeals() {
     <section className="py-12">
       <div className="container mx-auto">
         <h2 className="text-2xl font-bold mb-6 text-secondary dark:text-white">Top Deals</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {deals.map((deal) => (
-            <div key={deal.id} className="flex flex-col items-center bg-white dark:bg-darkblack rounded-lg shadow p-4">
-              <img src={deal.image} alt={deal.name} className="w-24 h-24 object-contain mb-2" />
-              <span className="font-medium text-lg mb-1 text-secondary dark:text-white">{deal.name}</span>
-              <span className="text-gray-500 line-through">${deal.oldPrice}</span>
-              <span className="text-primary font-bold mb-2">${deal.price}</span>
-              <button className="bg-primary text-white px-4 py-2 rounded hover:bg-primary/80">Add to Cart</button>
+            <div key={deal.id} className="flex flex-col items-center">
+              <img src={deal.image} alt={deal.name} className="w-44 h-44 object-contain mb-4 rounded-lg shadow-lg" />
+              <span className="font-medium text-lg mb-1 text-secondary dark:text-white text-center">{deal.name}</span>
+              <span className="text-gray-500 line-through text-center">${deal.oldPrice}</span>
+              <span className="text-primary font-bold mb-2 text-center">${deal.price}</span>
+              <button className="bg-primary text-white px-4 py-2 rounded-full hover:bg-primary/80 transition">Add to Cart</button>
             </div>
           ))}
         </div>

@@ -11,11 +11,11 @@ export default function Categories() {
     <section className="py-12 ">
       <div className="container mx-auto">
         <h2 className="text-2xl font-bold mb-6 text-secondary dark:text-white">Shop by Category</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
           {categories.map((cat) => (
-            <div key={cat.name} className="flex flex-col items-center bg-white dark:bg-darkblack rounded-lg shadow p-4">
-              <img src={cat.image} alt={cat.name} className="w-20 h-20 object-contain mb-2" />
-              <span className="font-medium text-lg text-secondary dark:text-white">{cat.name}</span>
+            <div key={cat.name} className="flex flex-col items-center">
+              <img src={cat.image} alt={cat.name} className="w-44 h-44 object-contain mb-4 rounded-lg shadow-lg" />
+              <span className="font-medium text-lg text-secondary dark:text-white text-center">{cat.name}</span>
             </div>
           ))}
         </div>

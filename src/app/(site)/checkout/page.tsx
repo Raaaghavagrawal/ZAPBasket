@@ -1,6 +1,6 @@
 "use client";
 import { useCart } from '../../components/cart/CartContext';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function CheckoutPage() {
@@ -19,6 +19,8 @@ export default function CheckoutPage() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const popupTimeout = useRef<NodeJS.Timeout | null>(null);
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   // Prefill address from localStorage
@@ -36,8 +38,13 @@ export default function CheckoutPage() {
   if (typeof window !== 'undefined') {
     if (params.get('success')) {
       setSuccess('Payment successful! Order placed.');
+      setShowPopup(true);
       clearCart();
-      setTimeout(() => router.push('/shop'), 2000);
+      if (popupTimeout.current) clearTimeout(popupTimeout.current);
+      popupTimeout.current = setTimeout(() => {
+        setShowPopup(false);
+        router.push('/shop');
+      }, 2500);
     }
     if (params.get('canceled')) {
       setError('Payment canceled.');
@@ -93,7 +100,12 @@ export default function CheckoutPage() {
           saveOrder({ ...form, total, paymentMethod, cart });
           clearCart();
           setSuccess('Order placed successfully!');
-          setTimeout(() => router.push('/shop'), 2000);
+          setShowPopup(true);
+          if (popupTimeout.current) clearTimeout(popupTimeout.current);
+          popupTimeout.current = setTimeout(() => {
+            setShowPopup(false);
+            router.push('/shop');
+          }, 2500);
         } else {
           setError(result.error || 'Failed to place order.');
         }
@@ -107,6 +119,28 @@ export default function CheckoutPage() {
 
   return (
     <div className="container mx-auto py-16 min-h-screen flex flex-col items-center justify-center">
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+          <div className="bg-white dark:bg-darkblack rounded-3xl shadow-2xl p-12 flex flex-col items-center max-w-lg w-full border-4 border-green-400 animate-fade-in">
+            <div className="mb-6">
+              <svg className="w-28 h-28 text-green-500 animate-tick-pop" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="6" fill="none" />
+                <path className="tick-path" d="M30 53 L45 68 L70 38" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              </svg>
+            </div>
+            <h2 className="text-3xl font-bold text-green-600 mb-4 text-center">Order placed successfully!</h2>
+            <p className="text-lg text-center text-secondary dark:text-white mb-2">You will receive tracking details on your email and contact number.</p>
+          </div>
+          <style jsx>{`
+            .animate-fade-in { animation: fadeIn 0.3s; }
+            @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+            .animate-tick-pop { animation: tickPop 0.7s cubic-bezier(.68,-0.55,.27,1.55); }
+            @keyframes tickPop { 0% { transform: scale(0.5); opacity: 0; } 60% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); } }
+            .tick-path { stroke-dasharray: 60; stroke-dashoffset: 60; animation: tickDraw 0.7s 0.2s forwards; }
+            @keyframes tickDraw { to { stroke-dashoffset: 0; } }
+          `}</style>
+        </div>
+      )}
       <div className="bg-white dark:bg-darkblack rounded-2xl shadow-lg p-8 max-w-2xl w-full">
         <h1 className="text-3xl font-bold mb-8 text-center text-secondary dark:text-white font-poppins mt-[100px]">Checkout</h1>
         <form onSubmit={handleSubmit} className="mb-8 grid grid-cols-1 gap-4">

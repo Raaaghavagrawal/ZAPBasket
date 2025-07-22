@@ -31,6 +31,7 @@ export default function OrdersPage() {
               <div className="mb-2 text-secondary dark:text-white">Email: <span className="font-medium">{order.email}</span></div>
               <div className="mb-2 text-secondary dark:text-white">Payment: <span className="font-medium capitalize">{order.paymentMethod || 'N/A'}</span></div>
               <div className="mb-4 text-secondary dark:text-white">Total: <span className="font-bold text-primary">${order.total}</span></div>
+              <div className="mb-4 text-green-600 text-lg font-semibold text-center">You will receive tracking details on your email and contact number.</div>
               <div>
                 <span className="font-semibold text-secondary dark:text-white">Items:</span>
                 <ul className="ml-4 mt-2 divide-y divide-gray-100 dark:divide-white/10">

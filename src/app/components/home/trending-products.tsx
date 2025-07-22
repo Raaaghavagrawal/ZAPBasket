@@ -9,13 +9,13 @@ export default function TrendingProducts() {
     <section className="py-12">
       <div className="container mx-auto">
         <h2 className="text-2xl font-bold mb-6 text-secondary dark:text-white">Trending Products</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {trending.map((item) => (
-            <div key={item.id} className="flex flex-col items-center bg-white dark:bg-darkblack rounded-lg shadow p-4">
-              <img src={item.image} alt={item.name} className="w-24 h-24 object-contain mb-2" />
-              <span className="font-medium text-lg mb-1 text-secondary dark:text-white">{item.name}</span>
-              <span className="text-primary font-bold mb-2">${item.price}</span>
-              <button className="bg-primary text-white px-4 py-2 rounded hover:bg-primary/80">Add to Cart</button>
+            <div key={item.id} className="flex flex-col items-center">
+              <img src={item.image} alt={item.name} className="w-44 h-44 object-contain mb-4 rounded-lg shadow-lg" />
+              <span className="font-medium text-lg mb-1 text-secondary dark:text-white text-center">{item.name}</span>
+              <span className="text-primary font-bold mb-2 text-center">${item.price}</span>
+              <button className="bg-primary text-white px-4 py-2 rounded-full hover:bg-primary/80 transition">Add to Cart</button>
             </div>
           ))}
         </div>
